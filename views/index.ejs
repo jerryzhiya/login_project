@@ -1,0 +1,47 @@
+
+
+<h1 class="page-title">Messages</h1>
+
+<% if (posts && posts.length) { %>
+  <div class="messages-container">
+    <% posts.forEach(post => { %>
+      <div class="card">
+        <h2 class="card-title"><%= post.title %></h2>
+        <p class="card-content"><%= post.content %></p>
+
+        <% if (user && (user.ismember || user.isadmin)) { %>
+          <small class="card-footer">
+            By <%= post.author %> • <%= new Date(post.created_at).toLocaleString() %>
+          </small>
+        <% } else { %>
+          <small class="card-footer">
+            By Anonymous • <%= new Date(post.createdat).toLocaleString() %>
+          </small>
+        <% } %>
+
+        <% if (user && user.isadmin) { %>
+          <form action="/messages/delete/<%= post.id %>" method="POST" style="display:inline;">
+            <button type="submit" class="btn danger">Delete</button>
+          </form>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+<% } else { %>
+  <p>No messages yet.</p>
+<% } %>
+
+<div class="actions">
+  <% if (user) { %>
+    <a href="/messages/new" class="btn primary">Create New Message</a>
+    <% if (!user.ismember) { %>
+      <a href="/club/join" class="btn secondary">Join the club</a>
+    <% } %>
+    <% if (!user.isadmin) { %>
+      <a href="/club/admin" class="btn secondary">Admin passcode</a>
+    <% } %>
+  <% } else { %>
+    <a href="/auth/log-in" class="btn primary">Log in</a>
+    <a href="/auth/sign-up" class="btn secondary">Sign Up</a>
+  <% } %>
+</div>

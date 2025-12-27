@@ -1,0 +1,21 @@
+import pkg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { Pool } = pkg;
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false // Supabase requires SSL
+  }
+});
+
+export default pool;
+// import postgres from 'postgres'
+
+// const connectionString = process.env.DATABASE_URL
+// const sql = postgres(connectionString)
+
+// export default sql

@@ -1,0 +1,20 @@
+<h1 class="page-title">Login to Your Account</h1>
+
+<form action="/auth/log-in" method="POST" class="form-card">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+  </div>
+
+  <button type="submit" class="btn primary">Log In</button>
+</form>
+
+<p class="form-footer">
+  Don’t have an account?
+  <a href="/auth/sign-up" class="link">Sign Up</a>
+</p>

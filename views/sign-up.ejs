@@ -1,0 +1,55 @@
+<h1 class="page-title">Create an Account</h1>
+
+<% if (error_msg && error_msg.length > 0) { %>
+  <div class="alert error">
+    <ul>
+      <% error_msg.forEach(msg => { %>
+        <li><%= msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<% if (success_msg && success_msg.length > 0) { %>
+  <div class="alert success">
+    <ul>
+      <% success_msg.forEach(msg => { %>
+        <li><%= msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form action="/auth/sign-up" method="POST" class="form-card">
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    <input name="firstname" type="text" value="<%= formData.firstname || '' %>" placeholder="Enter your first name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input name="lastname" type="text" value="<%= formData.lastname || '' %>" placeholder="Enter your last name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" value="<%= formData.email || '' %>" placeholder="Enter your email" required />
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" value="<%= formData.username || '' %>" placeholder="Choose a username" required />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Enter a password" required />
+  </div>
+
+  <button type="submit" class="btn primary">Sign Up</button>
+</form>
+
+<p class="form-footer">
+  Already have an account?
+  <a href="/auth/log-in" class="link">Log In</a>
+</p>

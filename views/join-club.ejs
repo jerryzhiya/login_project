@@ -1,0 +1,28 @@
+<h1 class="page-title">Join the club</h1>
+
+<% if(error_msg && error_msg.length > 0) { %>
+<div class="alert error">
+    <ul>
+        <% error_msg.forEach(msg => { %>
+        <li><%= msg %></li>
+        <% }) %>
+    </ul>
+</div>
+<% } %>
+
+<% if(success_msg && success_msg.length > 0) { %> 
+ <div class="alert success">
+    <ul>
+        <% success_msg.forEach(msg => { %> 
+        <li><%= msg %></li>
+        <% }) %>
+    </ul>
+ </div>
+<% } %>
+<form action="/club/join" method="POST" class="form-card">
+    <div class="form-group">
+        <label for="passcode">Secrete passcode:</label>
+        <input type="password" name="passcode" placeholder="Enter your passcode">
+    </div>
+    <button type="submit" class="btn primary">Join Club</button>
+</form>
